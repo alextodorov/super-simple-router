@@ -1,0 +1,31 @@
+{
+    "name": "super-simple/router",
+    "description": "Super Simple PHP Routing library.",
+    "type": "library",
+    "keywords": ["routing", "router", "route"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aleksandar Todorov",
+            "email": "aleksandr.todorov@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SSRouter\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SSRouter\\UnitTest\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=9.1"
+    }
+}
