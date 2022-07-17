@@ -2,3 +2,4 @@
 *.phar
 *.lock
 vendor/*
+.phpunit.cache/*
