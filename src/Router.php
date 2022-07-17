@@ -16,14 +16,14 @@ class Router implements Routerable
 
     public function addRoute(string $uri, HTTPMethod $method, callable|array $handler): void
     {
-        $this->config[$method->value][$uri] = $handler;  
+        $this->config[$method->value][$uri] = $handler;
     }
 
     public function setConfig(array $config): void
     {
         $this->config = [];
-  
-        foreach($config as $params) {
+
+        foreach ($config as $params) {
             $this->addRoute(
                 $params['uri'],
                 HTTPMethod::from($params['method']),
@@ -37,7 +37,7 @@ class Router implements Routerable
         if (!isset($this->config[$method->value])) {
             throw new NotFound('Route Not Found.');
         }
-        
+
         if (isset($this->config[$method->value][$uri])) {
             return [$uri, $this->config[$method->value][$uri]];
         }
