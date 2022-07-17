@@ -12,14 +12,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
       - name: Cache Composer
         uses: actions/cache@v2
           with:
             path: /tmp/composer-cache
             key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
 
-      - name: Composer
-        uses: php-actions/composer@v6
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
      
       - name: Tests
         run: "make phpunit" 
