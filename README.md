@@ -64,20 +64,21 @@ $result = $router->parse($uri, HTTPMethod::from($httpMethod)); // $uri and $http
 ```
 
 The result of parsing is an array.
-On first index is teh uri, the second is handler and the third contains the params if any exist.
+The first index is the uri.
+The second is handler and the third contains the params if any exist.
 
 ```php
 
 $result[0]; // is the uri.
 
-// if callable you can call it as:
+// if the handler is callable you can call it like:
 $result[1]();
 
 // or with params
 
-$result[1](...$result[2] ?? []);
+$result[1](...$result[2]);
 
-// when using array instead of callable:
+// when using handler array instead of callable:
 // It depends on structure of handler array in this example we have two keys the controller and the action.
 (new $result[1]['controller'])->{$result[1]['action']}();
 
