@@ -27,7 +27,7 @@ $router = new Router;
 $router->addRoute(
     '/test', // uri
     HTTPMethod::from($httpMethod), // http method
-    function () {return 'success';} // handler in this case callable
+    function () {return 'success';} // handler in this case is callable
 );
 
 // Or add a route as array
@@ -64,8 +64,12 @@ $result = $router->parse($uri, HTTPMethod::from($httpMethod)); // $uri and $http
 ```
 
 The result of parsing is an array.
-The first index is the uri.
-The second is handler and the third contains the params if any exist.
+
+The first element is the uri.
+
+The second element is handler.
+
+The third element contains the params if any exist.
 
 ```php
 
@@ -79,7 +83,8 @@ $result[1]();
 $result[1](...$result[2]);
 
 // when using handler array instead of callable:
-// It depends on structure of handler array in this example we have two keys the controller and the action.
+// It depends on structure of handler array.
+// In this example we have two keys the controller and the action.
 (new $result[1]['controller'])->{$result[1]['action']}();
 
 // Or with params
